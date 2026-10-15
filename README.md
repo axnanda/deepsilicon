@@ -11,9 +11,10 @@ rebuild keeps only the public landing page:
 - `docs/assets/index.css` is the original production stylesheet, byte-for-byte,
   except the footer LinkedIn icon path (that PNG was never archived; it is
   redrawn as `linkedin-logo.svg`).
-- "Models", "Console", "Build Now" and the footer "LinkedIn" link are inert:
-  they keep their hover effects and pointer but go nowhere, since the console
-  they led to is gone.
+- Nothing on the page is clickable: the logo, "Models", "Console", both "Build Now"
+  buttons, the phone hamburger and the footer "LinkedIn" link keep their hover
+  effects and pointer but do nothing, since the app behind them is gone. The page
+  has no links and no JavaScript.
 - `docs/404.html` sends old app routes (`/models`, `/login`, ...) to the landing page.
 - Phone fixes the original lacked: no sideways scroll, step cards fit screens under
   390px, the footer fits under 375px, and the mobile menu closes when the window

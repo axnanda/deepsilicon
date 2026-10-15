@@ -23,9 +23,9 @@
   <style>
     /* The React app swapped headers at innerWidth <= 600; same breakpoint, done in CSS. */
     .menu-toggle { display: none; cursor: pointer; }
-    .header-menu[hidden] { display: none; }
-    /* Nav, CTAs and the footer link are inert (the app behind them is gone); keep the original pointer. */
-    nav a, .social-link { cursor: pointer; }
+    /* Nothing on the page navigates or opens anything (the app behind it is gone),
+       but every control keeps its original pointer cursor and hover effects. */
+    nav a, .social-link, .header > .logo { cursor: pointer; }
     .hero-wrapper { max-width: 100vw; }
     .hero-image { max-width: calc(100vw - 50px); }
     /* Original bugs on phones: the step cards were wider than screens under ~390px and their
@@ -42,10 +42,6 @@
       .menu-toggle { display: block; }
       .header > .logo { padding-left: 0.5em; }
     }
-    /* the React app only rendered the dropdown in its mobile header */
-    @media (min-width: 601px) {
-      .header-menu { display: none !important; }
-    }
   </style>
 </head>
 <body>
@@ -53,7 +49,7 @@
   <div class="app">
     <div class="header-wrapper" style="background-color: var(--primary-green)">
       <header class="header" style="background-color: var(--card-bg)">
-        <a href="./" class="logo" style="text-decoration: none">
+        <a class="logo" style="text-decoration: none">
           <div class="logo-icon"></div>
           <span>deepsilicon</span>
         </a>
@@ -61,12 +57,8 @@
           <nav><a>Models</a></nav>
           <a class="account-btn">Console</a>
         </div>
-        <div class="menu-toggle" role="button" tabindex="0" aria-label="Menu" aria-expanded="false">
+        <div class="menu-toggle">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-align-justify" style="margin-right: 0.5em"><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
-        </div>
-        <div class="header-menu" hidden>
-          <div class="dropdown-item fine-tune"><nav><a>Models</a></nav></div>
-          <div class="dropdown-item unpublish"><nav><a>Console</a></nav></div>
         </div>
       </header>
     </div>
@@ -162,21 +154,5 @@
     </footer>
   </div>
 </div>
-<script>
-  var toggle = document.querySelector(".menu-toggle");
-  var menu = document.querySelector(".header-menu");
-  function setMenu(open) {
-    menu.hidden = !open;
-    toggle.setAttribute("aria-expanded", String(open));
-  }
-  toggle.addEventListener("click", function () { setMenu(menu.hidden); });
-  toggle.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setMenu(menu.hidden); }
-  });
-  menu.addEventListener("mouseleave", function () { setMenu(false); });
-  window.matchMedia("(max-width: 600px)").addEventListener("change", function (e) {
-    if (!e.matches) setMenu(false);
-  });
-</script>
 </body>
 </html>
