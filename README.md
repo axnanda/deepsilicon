@@ -14,7 +14,9 @@ rebuild keeps only the public landing page:
 - "Models", "Console" and "Build Now" open the deepsilicon LinkedIn page,
   since the console they used to lead to is gone.
 - `docs/404.html` sends old app routes (`/models`, `/login`, ...) to the landing page.
-- On phones, the original page scrolled 8px sideways; that is fixed.
+- Phone fixes the original lacked: no sideways scroll, step cards fit screens under
+  390px, the footer fits under 375px, and the mobile menu closes when the window
+  widens past 600px. At 390px and up, the page renders identically to the original.
 
 Served by GitHub Pages from `docs/` on `main`.
 
