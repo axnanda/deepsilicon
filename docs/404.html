@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>deepsilicon</title>
+  <script>
+    // Old app routes (/models, /login, /console, ...) are gone; send visitors to the landing page.
+    // On a GitHub Pages project site the root is the first path segment (e.g. /deepsilicon/).
+    var root = "/";
+    if (location.hostname.endsWith("github.io")) {
+      var seg = location.pathname.split("/")[1];
+      if (seg) root = "/" + seg + "/";
+    }
+    location.replace(root);
+  </script>
+</head>
+<body style="background:#141819"></body>
+</html>
